@@ -28,8 +28,29 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_kms_key" "rds_kms_key" {
-  description = "Chave KMS RDS"
+
+resource "random_password" "master"{
+  length           = 16
+  special          = true
+  override_special = "_!%^"
+}
+
+resource "aws_secretsmanager_secret" "password" {
+  name = "burger-db-password"
+}
+
+resource "aws_secretsmanager_secret_version" "password" {
+  secret_id = aws_secretsmanager_secret.password.id
+  secret_string = random_password.master.result
+}
+
+
+data "aws_secretsmanager_secret" "password" {
+  name = "burger-db-password"
+}
+
+data "aws_secretsmanager_secret_version" "password" {
+  secret_id = data.aws_secretsmanager_secret.password
 }
 
 resource "aws_db_instance" "default" {
@@ -38,9 +59,7 @@ resource "aws_db_instance" "default" {
   engine                        = "mysql"
   engine_version                = "5.8"
   instance_class                = "db.t3.micro"
-  manage_master_user_password   = true
-  master_user_secret_kms_key_id = aws_kms_key.rds_kms_key.key_id
   username                      = "fiap"
-  parameter_group_name          = "default.mysql5.8"
+  password                      = data.aws_secretsmanager_secret_version.password
   skip_final_snapshot           = true
 }
