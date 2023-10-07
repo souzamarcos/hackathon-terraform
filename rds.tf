@@ -5,6 +5,7 @@ data "aws_secretsmanager_secret" "password" {
 
 data "aws_secretsmanager_secret_version" "password" {
   secret_id = data.aws_secretsmanager_secret.password
+  depends_on = [aws_secretsmanager_secret.password]
 }
 
 resource "aws_db_instance" "default" {
