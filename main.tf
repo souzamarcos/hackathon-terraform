@@ -41,6 +41,6 @@ resource "aws_db_instance" "default" {
   manage_master_user_password   = true
   master_user_secret_kms_key_id = aws_kms_key.rds_kms_key.key_id
   username                      = "fiap"
-  parameter_group_name          = "default.mysql5.7"
+  parameter_group_name          = "default.mysql5.8"
   skip_final_snapshot           = true
 }
