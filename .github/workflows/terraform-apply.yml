@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  issue_comment:                                     
+    types: [created, edited, deleted]
 
 env:
   TF_CLOUD_ORGANIZATION: "souzamarcos"
@@ -13,7 +15,7 @@ env:
 
 jobs:
   terraform:
-    if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
+    if: contains(github.event.comment.html_url, '/pull/') && github.event.comment.body == '/apply'
     name: "Terraform Apply"
     runs-on: ubuntu-latest
     permissions:
@@ -43,15 +45,3 @@ jobs:
         with:
           run: ${{ steps.apply-run.outputs.run_id }}
           comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
-  job01:
-    if: contains(github.event.comment.html_url, '/pull/')    # check if the comments come from pull request, exclude those from issue.
-    runs-on: [re-centos7]
-    steps:
-      - name: say hello
-        if: contains(github.event.comment.body, '/support')   # check the comment if it contains the keywords
-        run: |
-        echo say hello
-      - name: test
-        if: contains(github.event.comment.body, '/test')  # check the comment if it contains the keywords
-        run: |
-        echo test
