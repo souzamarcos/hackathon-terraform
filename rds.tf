@@ -1,5 +1,6 @@
 data "aws_secretsmanager_secret" "password" {
   name = "burger-db-password"
+  depends_on = [aws_secretsmanager_secret.password]
 }
 
 data "aws_secretsmanager_secret_version" "password" {
