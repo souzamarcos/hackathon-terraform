@@ -1,5 +1,12 @@
-resource "aws_kms_key" "db_burger" {
-  description = "RDS Database Secret"
+variable "username" {
+  description = "Username for the master DB user."
+  default = "databaseteste"
+  type = string
+}
+variable "password" {
+  description = "Password of the database"
+  default = "password"
+  type = string
 }
 
 resource "aws_db_instance" "default" {
@@ -8,8 +15,7 @@ resource "aws_db_instance" "default" {
   engine                        = "mysql"
   engine_version                = "5.7"
   instance_class                = "db.t3.micro"
-  username                      = "fiap"
-  manage_master_user_password   = true
-  master_user_secret_kms_key_id = aws_kms_key.example.key_id
+  username                      = var.username
+  password                      = var.password
   parameter_group_name          = "default.mysql5.7"
 }
