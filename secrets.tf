@@ -7,12 +7,11 @@ resource "aws_secretsmanager_secret_version" "db_burger" {
   secret_id     = aws_secretsmanager_secret.db_burger.id
   secret_string = <<EOF
 {
-  "username": "${aws_db_instance.default.master_username}",
+  "username": "${aws_db_instance.default.username}",
   "password": "${random_password.db_master_password.result}",
   "engine": "mysql",
   "host": "${aws_db_instance.default.endpoint}",
-  "port": ${aws_db_instance.default.port},
-  "dbClusterIdentifier": "${aws_db_instance.default.cluster_identifier}"
+  "port": ${aws_db_instance.default.port}
 }
 EOF
 }
