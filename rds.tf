@@ -1,16 +1,15 @@
-resource "random_password" "password" {
-  length           = 16
-  special          = true
-  override_special = "!#$%&*()-_=+[]{}<>:?"
+resource "aws_kms_key" "db_burger" {
+  description = "RDS Database Secret"
 }
 
 resource "aws_db_instance" "default" {
   allocated_storage             = 5
-  db_name                       = "mydb"
+  db_name                       = "burger"
   engine                        = "mysql"
   engine_version                = "5.7"
   instance_class                = "db.t3.micro"
   username                      = "fiap"
-  password                      = random_password.password.result
+  manage_master_user_password   = true
+  master_user_secret_kms_key_id = aws_kms_key.example.key_id
   skip_final_snapshot           = true
 }
