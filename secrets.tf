@@ -8,10 +8,7 @@ resource "aws_secretsmanager_secret_version" "database_burger" {
   secret_string = <<EOF
 {
   "username": "${aws_db_instance.default.username}",
-  "password": "${random_password.db_master_password.result}",
-  "engine": "mysql",
-  "host": "${aws_db_instance.default.endpoint}",
-  "port": ${aws_db_instance.default.port}
+  "password": "${random_password.db_master_password.result}"
 }
 EOF
 }
