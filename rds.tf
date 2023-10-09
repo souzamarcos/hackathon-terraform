@@ -11,7 +11,7 @@ resource "aws_db_instance" "default" {
   engine                        = "mysql"
   engine_version                = "5.7"
   instance_class                = "db.t3.micro"
-  username                      = fiap
+  username                      = "fiap"
   password                      = random_password.db_master_password.result
   parameter_group_name          = "default.mysql5.7"
   publicly_accessible           = true
