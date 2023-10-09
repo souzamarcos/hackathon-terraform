@@ -5,7 +5,7 @@ resource "random_password" "password" {
 }
 
 resource "aws_db_instance" "default" {
-  allocated_storage             = 2
+  allocated_storage             = 5
   db_name                       = "mydb"
   engine                        = "mysql"
   engine_version                = "5.7"
