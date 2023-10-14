@@ -1,5 +1,5 @@
-# tech-challenge-terraform
-Repositório com a infraestrutura do tech challenge da FIAP
+# Tech Challenge Terraform
+Repositório com a infraestrutura AWS do tech challenge da FIAP utilizando terraform.
 
 # Executando mudanças na infraestrutura
 Basta abrir uma PR para a branch `main` com as novas alterações que o workflow `Terraform Plan` será executado. Caso o plano seja criado com sucesso, basta mergear a PR após aprovação de outro membro da equipe. O workflow `Terraform Apply` será executado assim que a PR for mergeada. Todo o processo do Terraform pode ser acompanhado pela página do [Terraform Cloud](https://app.terraform.io/app/souzamarcos/workspaces/terraform-github-actions).
