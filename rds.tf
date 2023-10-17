@@ -10,6 +10,7 @@ resource "aws_db_instance" "default" {
   db_name                       = "burger"
   engine                        = "mysql"
   engine_version                = "8.0.34"
+  allow_major_version_upgrade   = true
   instance_class                = "db.t3.micro"
   username                      = "fiap"
   password                      = random_password.db_master_password.result
