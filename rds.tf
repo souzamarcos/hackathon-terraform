@@ -9,10 +9,10 @@ resource "aws_db_instance" "default" {
   allocated_storage             = 5
   db_name                       = "burger"
   engine                        = "mysql"
-  engine_version                = "5.7"
+  engine_version                = "8.0.28"
   instance_class                = "db.t3.micro"
   username                      = "fiap"
   password                      = random_password.db_master_password.result
-  parameter_group_name          = "default.mysql5.7"
+  parameter_group_name          = "default.mysql5.8"
   publicly_accessible           = true
 }
