@@ -6,7 +6,7 @@ resource "random_password" "db_master_password"{
 
 resource "aws_db_subnet_group" "default" {
   name       = "rds-subnet-group"
-  subnet_ids = aws_subnet.private_subnets[count.index]
+  subnet_ids = ["${aws_subnet.private_subnets.*.id}"]
 
   tags = {
     Name = "RDS subnet group"
