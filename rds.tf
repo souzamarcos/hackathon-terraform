@@ -27,4 +27,5 @@ resource "aws_db_instance" "default" {
   publicly_accessible           = true
   db_subnet_group_name          = aws_db_subnet_group.default.name
   availability_zone             = var.azs[0]
+  skip_final_snapshot           = true
 }
