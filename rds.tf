@@ -26,4 +26,5 @@ resource "aws_db_instance" "default" {
   parameter_group_name          = "default.mysql8.0"
   publicly_accessible           = true
   db_subnet_group_name          = aws_db_subnet_group.default.name
+  availability_zone             = element(var.azs, count.index)
 }
