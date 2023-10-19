@@ -14,7 +14,7 @@ variable "private_subnet_cidrs" {
 variable "azs" {
  type        = list(string)
  description = "Availability Zones"
- default     = ["us-east-1a", "us-east-1b", "us-east-1c"]
+ default     = ["us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d", "us-east-1e", "us-east-1f"]
 }
 
 
@@ -22,6 +22,7 @@ resource "aws_vpc" "main" {
  cidr_block = "10.0.0.0/16"
 
  enable_dns_hostnames = true
+ enable_dns_support   = true
  
  tags = {
    Name = "Fiap VPC"
