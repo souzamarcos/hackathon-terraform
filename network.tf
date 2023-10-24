@@ -37,7 +37,9 @@ resource "aws_subnet" "public_subnets" {
  availability_zone = element(var.azs, count.index)
  
  tags = {
-   Name = "Public Subnet ${count.index + 1}"
+   Name                                          = "Public Subnet ${count.index + 1}"
+   "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+   "kubernetes.io/role/elb"                      = 1
  }
 }
  
@@ -48,7 +50,9 @@ resource "aws_subnet" "private_subnets" {
  availability_zone = element(var.azs, count.index)
  
  tags = {
-   Name = "Private Subnet ${count.index + 1}"
+   Name                                          = "Private Subnet ${count.index + 1}"
+   "kubernetes.io/cluster/${local.cluster_name}" = "shared"
+   "kubernetes.io/role/internal-elb"             = 1
  }
 }
 
