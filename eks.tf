@@ -3,6 +3,7 @@ locals {
   cluster_name = "prod"
 }
 
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.17.2"
@@ -10,8 +11,8 @@ module "eks" {
   cluster_name    = local.cluster_name
   cluster_version = "1.27"
 
-  vpc_id                         = aws_vpc.main.id
-  subnet_ids                     = aws_subnet.private_subnets.*.id
+  vpc_id                         = module.vpc.vpc_id
+  subnet_ids                     = module.vpc.private_subnets
   cluster_endpoint_public_access = true
 
   eks_managed_node_group_defaults = {
@@ -73,3 +74,4 @@ output "cluster_name" {
   description = "Kubernetes Cluster Name"
   value       = module.eks.cluster_name
 }
+	
