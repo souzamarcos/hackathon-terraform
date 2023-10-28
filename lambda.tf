@@ -3,7 +3,7 @@ resource "aws_lambda_function" "java_lambda_function" {
   //filename      = "s3://fiap-burger/lambda-client-auth/lambda-tech-challenge-fast-food-1.0-SNAPSHOT-plain.jar"
   //source_code_hash = "${base64sha256(file("s3://fiap-burger/lambda-client-auth/lambda-tech-challenge-fast-food-1.0-SNAPSHOT-plain.jar"))}"
   s3_bucket = "fiap-burger"
-  s3_key = "lambda-client-auth/lambda-tech-challenge-fast-food-1.0-SNAPSHOT.jar"
+  s3_key = "lambda-client-auth/app.zip"
   function_name = "java_lambda_function"
 
   handler          = "handler.LambdaHandler"
