@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "database_burger" {
-  name = "db_burger"
+  name = "rds_burger"
 }
 
 resource "aws_secretsmanager_secret_version" "database_burger" {
