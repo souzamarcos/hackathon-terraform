@@ -11,3 +11,13 @@ resource "aws_lambda_function" "java_lambda_function" {
   depends_on   = ["aws_cloudwatch_log_group.log_group"]
 
 }
+
+resource "aws_lambda_permission" "java_lambda_function" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.java_lambda_function.function_name}"
+  principal     = "apigateway.amazonaws.com"
+  # The /*/* portion grants access from any method on any resource
+  # within the API Gateway "REST API".
+  source_arn = "${aws_api_gateway_deployment.java_lambda_deploy.execution_arn}/*/*"
+}
