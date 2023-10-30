@@ -50,13 +50,3 @@ resource "aws_api_gateway_deployment" "java_lambda_deploy" {
   rest_api_id = "${aws_api_gateway_rest_api.java_lambda_api.id}"
   stage_name  = "terraform-lambda-java-stage"
 }
-
-resource "aws_api_gateway_method_settings" "all" {
-  rest_api_id = aws_api_gateway_rest_api.java_lambda_api.id
-  stage_name  = aws_api_gateway_deployment.java_lambda_deploy.stage_name
-  method_path = "*/*"
-
-  settings {
-    logging_level   = "INFO"
-  }
-}
