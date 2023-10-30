@@ -53,9 +53,8 @@ resource "aws_iam_role_policy_attachment" "aws_iam_role_policy_attachment" {
   policy_arn = "${aws_iam_policy.iam_policy_for_lambda.arn}"
 }
 
-resource "aws_iam_role_policy" "dynamodb-lambda-policy" {
+resource "aws_iam_policy" "dynamodb-lambda-policy" {
   name = "dynamodb_lambda_policy"
-  role = aws_iam_role.iam_role_for_lambda.id
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -71,5 +70,5 @@ resource "aws_iam_role_policy" "dynamodb-lambda-policy" {
 
 resource "aws_iam_role_policy_attachment" "aws_iam_role_policy_dynamodb_attachment" {
   role       = "${aws_iam_role.iam_role_for_lambda.name}"
-  policy_arn = "${aws_iam_role_policy.dynamodb-lambda-policy.arn}"
+  policy_arn = "${aws_iam_policy.dynamodb-lambda-policy.arn}"
 }
