@@ -56,28 +56,3 @@ resource "aws_iam_role_policy_attachment" "aws_iam_role_policy_attachment" {
   role       = "${aws_iam_role.iam_role_for_lambda.name}"
   policy_arn = "${aws_iam_policy.iam_policy_for_lambda.arn}"
 }
-
-#resource "aws_iam_policy" "dynamodb-lambda-policy" {
-#  name = "dynamodb_lambda_policy"
-#  policy = jsonencode({
-#    "Version" : "2012-10-17",
-#    "Statement" : [
-#      {
-#        "Effect" : "Allow",
-#        "Action" : ["dynamodb:*"],
-#        "Resource" : "${aws_dynamodb_table.tf_clients_table.arn}"
-#      }
-#    ]
-#  })
-#}
-#
-#
-#resource "aws_iam_role_policy_attachment" "aws_iam_role_policy_dynamodb_attachment" {
-#  role       = "${aws_iam_role.iam_role_for_lambda.name}"
-#  policy_arn = "${aws_iam_policy.dynamodb-lambda-policy.arn}"
-#}
-#
-#resource "aws_iam_role_policy_attachment" "lambda_policy" {
-#  role = aws_iam_role.iam_role_for_lambda.name
-#  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-#}
