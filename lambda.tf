@@ -12,7 +12,7 @@ resource "aws_lambda_function" "java_lambda_function" {
 
   environment {
     variables = {
-      NOTES_TABLE = aws_dynamodb_table.tf_clients_table.name
+      CLIENTS_TABLE = aws_dynamodb_table.tf_clients_table.name
     }
   }
 }
