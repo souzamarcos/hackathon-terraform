@@ -12,5 +12,4 @@ resource "aws_dynamodb_table" "tf_clients_table" {
     type = "N"
   }
   hash_key = "cpf"
-  range_key = "id"
 }
