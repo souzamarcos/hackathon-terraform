@@ -7,9 +7,5 @@ resource "aws_dynamodb_table" "tf_clients_table" {
     name = "cpf"
     type = "S"
   }
-  attribute {
-    name = "id"
-    type = "N"
-  }
   hash_key = "cpf"
 }
