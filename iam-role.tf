@@ -75,5 +75,5 @@ resource "aws_iam_role_policy_attachment" "aws_iam_role_policy_dynamodb_attachme
 
 resource "aws_iam_role_policy_attachment" "lambda_policy" {
   role = aws_iam_role.iam_role_for_lambda.name
-  policy_arn = "arn:aws:iam::aws:policy/servicerole/AWSLambdaBasicExecutionRole"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
