@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "java_lambda_function" {
   runtime          = "java17"
   s3_bucket = "fiap-burger"
-  s3_key = "lambda-client-auth/lambda-client-authentication-with-secret.zip"
+  s3_key = "lambda-client-auth/lambda-client-authentication.zip"
   function_name = "java_lambda_function"
 
   handler          = "com.fiap.burger.handler.LambdaHandler::handleRequest"
