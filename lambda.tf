@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "java_lambda_function" {
   runtime          = "java17"
   s3_bucket = "fiap-burger"
-  s3_key = "lambda-client-auth/lambda-client-authentication-dynamo.zip"
+  s3_key = "lambda-client-auth/lambda-client-authentication-with-secret.zip"
   function_name = "java_lambda_function"
 
   handler          = "com.fiap.burger.handler.LambdaHandler::handleRequest"
@@ -22,7 +22,5 @@ resource "aws_lambda_permission" "java_lambda_function" {
   action        = "lambda:InvokeFunction"
   function_name = "${aws_lambda_function.java_lambda_function.function_name}"
   principal     = "apigateway.amazonaws.com"
-  # The /*/* portion grants access from any method on any resource
-  # within the API Gateway "REST API".
   source_arn = "${aws_api_gateway_deployment.java_lambda_deploy.execution_arn}/*/*"
 }
