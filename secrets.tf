@@ -16,12 +16,12 @@ EOF
 }
 
 resource "aws_secretsmanager_secret" "token_jwt" {
-  name = "token-jwt-secret"
+  name = "token_jwt"
 }
 
 resource "random_id" "token_jwt" {
   keepers = {
-    ami_id = "token_jwt"
+    ami_id = "token_jwt_v1"
   }
 
   byte_length = 8
