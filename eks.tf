@@ -13,6 +13,8 @@ module "eks" {
     ami_type = "AL2_x86_64"
   }
 
+  iam_role_additional_policies = [aws_iam_policy.iam_policy_for_eks_node_group.arn]
+
   eks_managed_node_groups = {
     one = {
       name = "node-group-1"
