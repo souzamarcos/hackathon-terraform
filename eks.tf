@@ -14,7 +14,7 @@ module "eks" {
   }
 
   iam_role_additional_policies = {
-    additional  = aws_iam_policy.iam_policy_for_eks_node_group.arn
+    additional_node_group_policy  = aws_iam_policy.iam_policy_for_eks_node_group.arn
   }
 
   eks_managed_node_groups = {
