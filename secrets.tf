@@ -31,6 +31,6 @@ resource "aws_secretsmanager_secret_version" "token_jwt" {
   secret_id     = aws_secretsmanager_secret.token_jwt.id
   secret_string = jsonencode({
     "token_jwt_secret" : "${random_id.token_jwt.hex}",
-    "token_jwt_issuer" : "Pos-Tech FIAP - Burger"
+    "token_jwt_issuer" : "https://fiap.auth0.com/"
   })
 }
