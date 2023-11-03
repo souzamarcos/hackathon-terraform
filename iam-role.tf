@@ -64,6 +64,14 @@ resource "aws_iam_policy" "iam_policy_for_eks_node_group" {
             "Effect" : "Allow",
             "Action" : ["dynamodb:*"],
             "Resource" : "${aws_dynamodb_table.tf_clients_table.arn}"
+          },
+          {
+            "Action": [
+              "secretsmanager:GetSecretValue"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "AllowSecretGetValue"
           }
         ]
       })
