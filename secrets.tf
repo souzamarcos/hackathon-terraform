@@ -3,8 +3,8 @@ resource "aws_secretsmanager_secret" "db_product" {
 }
 
 resource "aws_secretsmanager_secret_version" "db_product" {
-  depends_on = [aws_db_instance.default]
-  secret_id     = aws_secretsmanager_secret.database_burger.id
+  depends_on = [aws_db_instance.db_product]
+  secret_id     = aws_secretsmanager_secret.db_product.id
   secret_string = <<EOF
 {
   "username": "${aws_db_instance.db_product.username}",
@@ -20,8 +20,8 @@ resource "aws_secretsmanager_secret" "db_order" {
 }
 
 resource "aws_secretsmanager_secret_version" "db_order" {
-  depends_on = [aws_db_instance.default]
-  secret_id     = aws_secretsmanager_secret.database_burger.id
+  depends_on = [aws_db_instance.db_order]
+  secret_id     = aws_secretsmanager_secret.db_order.id
   secret_string = <<EOF
 {
   "username": "${aws_db_instance.db_order.username}",
