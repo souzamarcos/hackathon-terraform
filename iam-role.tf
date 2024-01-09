@@ -82,3 +82,9 @@ resource "aws_iam_role_policy_attachment" "aws_iam_role_policy_attachment" {
   role       = "${aws_iam_role.iam_role_for_lambda.name}"
   policy_arn = "${aws_iam_policy.iam_policy_for_lambda.arn}"
 }
+
+# Attach aws lab role
+resource "aws_iam_role_policy_attachment" "lab_role_policy_attachment" {
+  role       = "LabRole"
+  policy_arn = "${aws_iam_policy.iam_policy_for_lambda.arn}"
+}
