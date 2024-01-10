@@ -2,7 +2,7 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_lambda_function" "java_lambda_function" {
   runtime          = "java17"
-  s3_bucket = "fiap-burger"
+  s3_bucket = "fiap-burger-lambda"
   s3_key = "lambda-client-auth/lambda-client-authentication.zip"
   function_name = "java_lambda_function"
 
