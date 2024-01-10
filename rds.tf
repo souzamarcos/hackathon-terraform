@@ -13,7 +13,7 @@ resource "random_password" "db_order_password"{
 resource "aws_db_instance" "db_product" {
   depends_on                    = [random_password.db_product_password]
   allocated_storage             = 5
-  db_name                       = "ms-product"
+  db_name                       = "dbProduct"
   engine                        = "mysql"
   engine_version                = "8.0.34"
   allow_major_version_upgrade   = true
@@ -30,7 +30,7 @@ resource "aws_db_instance" "db_product" {
 resource "aws_db_instance" "db_order" {
   depends_on                    = [random_password.db_order_password]
   allocated_storage             = 5
-  db_name                       = "ms-order"
+  db_name                       = "dbOrder"
   engine                        = "mysql"
   engine_version                = "8.0.34"
   allow_major_version_upgrade   = true
