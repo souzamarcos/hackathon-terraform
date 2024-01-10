@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 resource "aws_lambda_function" "java_lambda_function" {
   runtime          = "java17"
   s3_bucket = "fiap-burger"
@@ -7,7 +9,8 @@ resource "aws_lambda_function" "java_lambda_function" {
   handler          = "com.fiap.burger.handler.LambdaHandler::handleRequest"
   timeout = 60
   memory_size = 256
-  role             = "${aws_iam_role.iam_role_for_lambda.arn}"
+  # role             = "${aws_iam_role.iam_role_for_lambda.arn}"
+  role             = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/LabRole"
   depends_on   = [aws_cloudwatch_log_group.log_group]
 
   environment {

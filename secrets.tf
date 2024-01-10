@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "db_product" {
-  name = "rds_product"
+  name = "db_product"
 }
 
 resource "aws_secretsmanager_secret_version" "db_product" {
@@ -16,7 +16,7 @@ EOF
 }
 
 resource "aws_secretsmanager_secret" "db_order" {
-  name = "rds_order"
+  name = "db_order"
 }
 
 resource "aws_secretsmanager_secret_version" "db_order" {
