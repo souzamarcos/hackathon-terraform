@@ -2,6 +2,15 @@ resource "aws_secretsmanager_secret" "db_product" {
   name = "db_product"
 }
 
+resource "aws_secretsmanager_secret" "db_order" {
+  name = "db_order"
+}
+
+
+resource "aws_secretsmanager_secret" "db_payment" {
+  name = "db_order"
+}
+
 resource "aws_secretsmanager_secret_version" "db_product" {
   depends_on = [aws_db_instance.db_product]
   secret_id     = aws_secretsmanager_secret.db_product.id
@@ -13,10 +22,6 @@ resource "aws_secretsmanager_secret_version" "db_product" {
   "port": ${aws_db_instance.db_product.port}
 }
 EOF
-}
-
-resource "aws_secretsmanager_secret" "db_order" {
-  name = "db_order"
 }
 
 resource "aws_secretsmanager_secret_version" "db_order" {
@@ -32,6 +37,18 @@ resource "aws_secretsmanager_secret_version" "db_order" {
 EOF
 }
 
+resource "aws_secretsmanager_secret_version" "db_payment" {
+  depends_on = [aws_db_instance.db_payment]
+  secret_id     = aws_secretsmanager_secret.db_payment.id
+  secret_string = <<EOF
+{
+  "username": "${aws_db_instance.db_payment.username}",
+  "password": "${random_password.db_payment.result}",
+  "host": "${aws_db_instance.db_payment.endpoint}",
+  "port": ${aws_db_instance.db_payment.port}
+}
+EOF
+}
 
 resource "aws_secretsmanager_secret" "token_jwt" {
   name = "token_jwt"
