@@ -20,6 +20,7 @@ resource "random_password" "db_payment_password"{
 resource "aws_db_instance" "db_product" {
   depends_on                    = [random_password.db_product_password]
   allocated_storage             = 5
+  identifier                    = "db-product"
   db_name                       = "dbProduct"
   engine                        = "mysql"
   engine_version                = "8.0.34"
@@ -37,6 +38,7 @@ resource "aws_db_instance" "db_product" {
 resource "aws_db_instance" "db_order" {
   depends_on                    = [random_password.db_order_password]
   allocated_storage             = 5
+  identifier                    = "db-order"
   db_name                       = "dbOrder"
   engine                        = "mysql"
   engine_version                = "8.0.34"
@@ -54,6 +56,7 @@ resource "aws_db_instance" "db_order" {
 resource "aws_db_instance" "db_payment" {
   depends_on                    = [random_password.db_payment_password]
   allocated_storage             = 5
+  identifier                    = "db-payment"
   db_name                       = "dbPayment"
   engine                        = "mysql"
   engine_version                = "8.0.34"
