@@ -43,7 +43,7 @@ resource "aws_secretsmanager_secret_version" "db_payment" {
   secret_string = <<EOF
 {
   "username": "${aws_db_instance.db_payment.username}",
-  "password": "${random_password.db_payment.result}",
+  "password": "${random_password.db_payment_password.result}",
   "host": "${aws_db_instance.db_payment.endpoint}",
   "port": ${aws_db_instance.db_payment.port}
 }
