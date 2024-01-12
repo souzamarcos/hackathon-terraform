@@ -8,7 +8,7 @@ resource "aws_secretsmanager_secret" "db_order" {
 
 
 resource "aws_secretsmanager_secret" "db_payment" {
-  name = "db_order"
+  name = "db_payment"
 }
 
 resource "aws_secretsmanager_secret_version" "db_product" {
