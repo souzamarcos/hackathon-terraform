@@ -63,7 +63,13 @@ resource "aws_iam_policy" "iam_policy_for_eks_node_group" {
             "Sid": "AllowDynamoDB",
             "Effect" : "Allow",
             "Action" : ["dynamodb:*"],
-            "Resource" : "${aws_dynamodb_table.tf_clients_table.arn}"
+            "Resource" : "*"
+          },
+          {
+            "Sid": "AllowSqs",
+            "Effect" : "Allow",
+            "Action" : ["sqs:*"],
+            "Resource" : "*"
           },
           {
             "Action": [
