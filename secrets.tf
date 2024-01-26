@@ -1,14 +1,13 @@
 resource "aws_secretsmanager_secret" "db_product" {
-  name = "db_product"
+  name = "rds_product"
 }
 
 resource "aws_secretsmanager_secret" "db_order" {
-  name = "db_order"
+  name = "rds_order"
 }
 
-
 resource "aws_secretsmanager_secret" "db_payment" {
-  name = "db_payment"
+  name = "rds_payment"
 }
 
 resource "aws_secretsmanager_secret_version" "db_product" {
@@ -51,7 +50,7 @@ EOF
 }
 
 resource "aws_secretsmanager_secret" "token_jwt" {
-  name = "token_jwt"
+  name = "secret_token_jwt"
 }
 
 resource "random_id" "token_jwt" {
