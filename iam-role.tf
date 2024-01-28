@@ -30,7 +30,7 @@ resource "aws_iam_policy" "iam_policy_for_lambda" {
             "Sid": "AllowDynamoDB",
             "Effect" : "Allow",
             "Action" : ["dynamodb:*"],
-            "Resource" : "${aws_dynamodb_table.tf_clients_table.arn}"
+            "Resource" : "${aws_dynamodb_table.tf_customers_table.arn}"
           },
           {
             "Sid": "LambdaPolicy",

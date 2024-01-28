@@ -1,4 +1,4 @@
-resource "aws_dynamodb_table" "tf_clients_table" {
+resource "aws_dynamodb_table" "tf_customers_table" {
   name = "tf-customers-table"
   billing_mode = "PROVISIONED"
   read_capacity= "2"

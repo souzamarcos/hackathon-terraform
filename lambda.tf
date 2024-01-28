@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "java_lambda_function" {
   runtime          = "java17"
   s3_bucket = "fiap-burger-lambda"
-  s3_key = "lambda-client-auth/lambda-client-authentication.zip"
+  s3_key = "lambda-client-auth/lambda-customer-authentication.zip"
   function_name = "java_lambda_function"
   handler          = "com.fiap.burger.handler.LambdaHandler::handleRequest"
   timeout = 60
@@ -11,7 +11,7 @@ resource "aws_lambda_function" "java_lambda_function" {
 
   environment {
     variables = {
-      CLIENTS_TABLE = aws_dynamodb_table.tf_clients_table.name
+      CUSTOMER_TABLE = aws_dynamodb_table.tf_customers_table.name
     }
   }
 }
