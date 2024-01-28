@@ -10,6 +10,11 @@ resource "aws_dynamodb_table" "tf_clients_table" {
     type = "S"
   }
 
+  attribute {
+    name = "cpf"
+    type = "S"
+  }
+
   global_secondary_index {
     name               = "cpf"
     hash_key           = "cpf"
