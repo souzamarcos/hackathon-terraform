@@ -4,8 +4,8 @@ resource "aws_dynamodb_table" "tf_clients_table" {
   read_capacity= "2"
   write_capacity= "2"
   attribute {
-    name = "cpf"
+    name = "id"
     type = "S"
   }
-  hash_key = "cpf"
+  hash_key = "id"
 }
