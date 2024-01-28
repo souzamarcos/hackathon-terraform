@@ -15,6 +15,6 @@ resource "aws_dynamodb_table" "tf_clients_table" {
     hash_key           = "cpf"
     write_capacity     = 2
     read_capacity      = 2
-    projection_type    = "ALL "
+    projection_type    = "ALL"
   }
 }
