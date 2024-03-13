@@ -17,3 +17,8 @@ resource "aws_ecr_repository" "ms_customer" {
   name                 = "ms-customer"
   image_tag_mutability = "MUTABLE"
 }
+
+resource "aws_ecr_repository" "ms_notification" {
+  name                 = "ms-notification"
+  image_tag_mutability = "MUTABLE"
+}
