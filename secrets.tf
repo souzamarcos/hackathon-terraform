@@ -50,7 +50,7 @@ EOF
 }
 
 resource "aws_secretsmanager_secret" "token_jwt" {
-  name = "secret_token_jwt"
+  name = "token_jwt"
 }
 
 resource "random_id" "token_jwt" {
