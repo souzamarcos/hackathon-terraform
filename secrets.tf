@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "db_working_hours" {
-  name = "rds_product"
+  name = "rds_working_hours"
 }
 
 resource "aws_secretsmanager_secret_version" "db_working_hours" {

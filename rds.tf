@@ -5,7 +5,7 @@ resource "random_password" "db_working_hours_password"{
 }
 
 resource "aws_db_instance" "db_working_hours" {
-  depends_on                    = [random_password.db_product_password]
+  depends_on                    = [random_password.db_working_hours_password]
   allocated_storage             = 5
   identifier                    = "db-working-hours"
   db_name                       = "dbWorkingHours"
