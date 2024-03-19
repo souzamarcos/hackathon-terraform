@@ -1,5 +1,5 @@
-resource "aws_dynamodb_table" "tf_customers_table" {
-  name = "tf-customers-table"
+resource "aws_dynamodb_table" "tf_employee_table" {
+  name = "tf-employee-table"
   billing_mode = "PROVISIONED"
   read_capacity= "2"
   write_capacity= "2"
@@ -11,13 +11,23 @@ resource "aws_dynamodb_table" "tf_customers_table" {
   }
 
   attribute {
-    name = "cpf"
+    name = "name"
+    type = "S"
+  }
+
+  attribute {
+    name = "email"
+    type = "S"
+  }
+
+  attribute {
+    name = "password"
     type = "S"
   }
 
   global_secondary_index {
-    name               = "cpf"
-    hash_key           = "cpf"
+    name               = "email"
+    hash_key           = "email"
     write_capacity     = 2
     read_capacity      = 2
     projection_type    = "ALL"

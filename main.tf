@@ -19,7 +19,7 @@ terraform {
     organization = "souzamarcos"
 
     workspaces {
-      name = "terraform-github-actions"
+      name = "hackathon-terraform"
     }
   }
 }
