@@ -11,20 +11,10 @@ resource "aws_dynamodb_table" "tf_employee_table" {
   }
 
   attribute {
-    name = "name"
-    type = "S"
-  }
-
-  attribute {
     name = "email"
     type = "S"
   }
-
-  attribute {
-    name = "password"
-    type = "S"
-  }
-
+  
   global_secondary_index {
     name               = "email"
     hash_key           = "email"
