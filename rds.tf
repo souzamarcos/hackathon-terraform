@@ -33,7 +33,6 @@ resource "aws_db_instance" "db_working_hours_replica" {
   skip_final_snapshot           = true
   backup_retention_period       = 7
   replicate_source_db           = aws_db_instance.db_working_hours.identifier
-  username                      = "fiap"
   parameter_group_name          = "default.mysql8.0"
   publicly_accessible           = true
   password                      = random_password.db_working_hours_replica_password.result
