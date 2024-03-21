@@ -26,6 +26,8 @@ resource "aws_db_instance" "db_working_hours" {
   db_subnet_group_name          = module.vpc.database_subnet_group_name
   availability_zone             = module.vpc.azs[0]
   skip_final_snapshot           = true
+  backup_retention_period       = 7
+  storage_encrypted             = true
 }
 
 resource "aws_db_instance" "db_working_hours_replica" {
@@ -38,4 +40,5 @@ resource "aws_db_instance" "db_working_hours_replica" {
   password                      = random_password.db_working_hours_replica_password.result
   db_subnet_group_name          = module.vpc.database_subnet_group_name
   availability_zone             = module.vpc.azs[0]
+  storage_encrypted             = true
 }
